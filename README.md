@@ -1,5 +1,5 @@
 # Logic-Blocks
-Human Resource Machine like game
+Human Resource Machine like game that based on visual programming
 
 You have to create your own algorithms to solve and complete levels
 
