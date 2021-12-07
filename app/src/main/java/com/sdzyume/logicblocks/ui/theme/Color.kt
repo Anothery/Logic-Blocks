@@ -8,6 +8,8 @@ val AverBlue = Color(0xFF8189a3)
 val DeepBlue = Color(0xFF484E5E)
 val GrayedPink = Color(0xFFc55e6c)
 val GrayedGreen = Color(0xFF608e5b)
+val LightAnimBlue = Color(0xFFa0abc9)
+val DarkAnimBlue = Color(0xFF595e74)
 val Blue = Color(0xFF444a9e)
 val Violet = Color(0xFF45223a)
 

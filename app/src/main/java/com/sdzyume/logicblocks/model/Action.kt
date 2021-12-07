@@ -20,6 +20,17 @@ sealed class Condition(open val numberToCompare: Int) {
     data class Equals(override val numberToCompare: Int) : Condition(numberToCompare)
     data class NotEquals(override val numberToCompare: Int) : Condition(numberToCompare)
 
+    fun checkMatchCondition(currentNumber: Int): Boolean {
+        return when (this) {
+            is Greater -> currentNumber > numberToCompare
+            is GreaterOrEqual -> currentNumber >= numberToCompare
+            is Equals -> currentNumber == numberToCompare
+            is NotEquals -> currentNumber != numberToCompare
+            is Lesser -> currentNumber < numberToCompare
+            is LesserOrEqual -> currentNumber <= numberToCompare
+        }
+    }
+
     companion object {
         const val EQUALS = "="
         const val NOT_EQUALS = "≠"

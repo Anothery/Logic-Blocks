@@ -35,4 +35,15 @@
     <string name="level_win">Победа!</string>
     <string name="level_win_to_menu">К списку уровней</string>
     <string name="icon_back_to_menu">Вернуться в меню</string>
+    <string name="onboarding_get_started">Начать</string>
+    <string name="main_help">Помощь</string>
+    <string name="onboarding_skip">Пропустить</string>
+    <string name="onboarding_first_1">Logic Blocks - это игра на основе визуального программирования</string>
+    <string name="onboarding_first_2">Создавайте свои алгоритмы для решения задач!</string>
+    <string name="onboarding_second_1">Числа на верхней панели - исходные данные</string>
+    <string name="onboarding_second_2">Числа на нижней панели - данные, которые вы вывели на проверку</string>
+    <string name="onboarding_third_1">Создавайте команды необходимые для решения каждого уровня</string>
+    <string name="onboarding_third_2">Добавляйте условия для команды, нажимая и удерживая на нужную команду</string>
+    <string name="onboarding_fourth_1">Вы также можете вернуться на предыдущие шаги с помощью команды \"Вернуться\"</string>
+    <string name="onboarding_fourth_2">Удачи и приятной игры!</string>
 </resources>

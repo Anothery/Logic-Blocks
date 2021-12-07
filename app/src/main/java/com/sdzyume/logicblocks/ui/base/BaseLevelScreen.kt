@@ -28,8 +28,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.*
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.LocalContext
@@ -46,6 +48,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
 import com.airbnb.lottie.compose.*
 import com.airbnb.lottie.compose.LottieConstants.IterateForever
+import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import com.sdzyume.logicblocks.R
 import com.sdzyume.logicblocks.ui.Route
 import com.sdzyume.logicblocks.model.Action
@@ -65,16 +68,23 @@ fun BaseLevelScreen(
     effectFlow: Flow<LevelContract.Effect>,
     onEvent: (LevelContract.Event) -> Unit
 ) {
+    rememberSystemUiController().apply {
+        setStatusBarColor(DarkBlue, darkIcons = false)
+        setNavigationBarColor(DarkBlue, darkIcons = false)
+    }
+
     var drawerOffset by remember { mutableStateOf(0f) }
     val confetti by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.confetti))
     val chalice by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.winner))
 
     Box(modifier = Modifier.fillMaxSize()) {
         ModalDrawer(drawerContent = {
-            FirstLevelCommands(
-                state,
-                onEvent = onEvent
-            )
+            if (!state.isChecking) {
+                FirstLevelCommands(
+                    state,
+                    onEvent = onEvent
+                )
+            }
         },
             drawerShape = object : Shape {
                 override fun createOutline(
@@ -109,13 +119,17 @@ fun BaseLevelScreen(
             LottieAnimation(
                 confetti,
                 iterations = IterateForever,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(), contentScale = ContentScale.FillWidth
             )
 
             Box(
                 modifier = Modifier.fillMaxSize()
             ) {
-                LottieAnimation(chalice, modifier = Modifier.align(Alignment.Center))
+                LottieAnimation(
+                    chalice,
+                    modifier = Modifier.align(Alignment.Center),
+                    contentScale = ContentScale.FillWidth
+                )
 
                 Text(
                     stringResource(R.string.level_win),
@@ -128,11 +142,7 @@ fun BaseLevelScreen(
                 )
                 OutlinedButton(
                     onClick = {
-                        navController.navigate(Route.Menu.route) {
-                            popUpTo(Route.Menu.route) {
-                                inclusive = false
-                            }
-                        }
+                        navController.popBackStack()
                     },
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
@@ -201,11 +211,7 @@ fun BaseLevelContent(
                 Box(
                     Modifier.fillMaxWidth(),
                 ) {
-                    IconButton(onClick = { navController.navigate(Route.Menu.route) {
-                        popUpTo(Route.Menu.route) {
-                            inclusive = false
-                        }
-                    } }) {
+                    IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             Icons.Outlined.Logout,
                             stringResource(R.string.icon_back_to_menu),
@@ -332,7 +338,7 @@ fun BaseLevelContent(
                         ) {
                             itemsIndexed(state.resultData) { i, it ->
                                 val isItemCorrect =
-                                    state.resultData.size <= state.successDataToCompare.size && state.resultData[i] == state.successDataToCompare[i]
+                                    state.resultData[i] == state.successDataToCompare.getOrNull(i)
                                 Column(
                                     modifier = Modifier
                                         .padding(4.dp)
@@ -768,7 +774,13 @@ fun FirstLevelCommands(state: LevelContract.State, onEvent: (LevelContract.Event
         Text(
             text = stringResource(R.string.commands),
             modifier = Modifier.padding(horizontal = 8.dp, vertical = 16.dp),
-            color = Color.White
+            color = Color.White, style = MaterialTheme.typography.subtitle1.copy(
+                shadow = Shadow(
+                    color = Color.Black,
+                    offset = Offset(2f, 2f),
+                    blurRadius = 8f
+                )
+            )
         )
         CommandItem(
             text = stringResource(R.string.action_get),
@@ -842,6 +854,7 @@ fun FirstLevelCommands(state: LevelContract.State, onEvent: (LevelContract.Event
                     )
                 }
             }
+            else -> {}
         }
     }
 }

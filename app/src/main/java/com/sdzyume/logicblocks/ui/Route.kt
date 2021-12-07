@@ -9,4 +9,5 @@ sealed class Route(val route: String) {
     object ThirdLevel : Route("ThirdLevel")
     object FourthLevel : Route("FourthLevel")
     object FifthLevel : Route("FifthLevel")
+    object Onboarding: Route("Onboarding")
 }
