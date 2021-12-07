@@ -37,12 +37,14 @@ fun FirstOnboarding() {
         }
         Spacer(modifier = Modifier.height(12.dp))
         Text(
+            modifier = Modifier.fillMaxWidth(),
             text = stringResource(R.string.onboarding_first_1),
             textAlign = TextAlign.Center, fontSize = 18.sp,
             color = Color.White
         )
         Spacer(modifier = Modifier.height(12.dp))
         Text(
+            modifier = Modifier.fillMaxWidth(),
             text = stringResource(R.string.onboarding_first_2),
             textAlign = TextAlign.Center, fontSize = 18.sp,
             color = Color.White

@@ -26,6 +26,7 @@ fun ThirdOnboarding() {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
+            modifier = Modifier.fillMaxWidth(),
             text = stringResource(R.string.onboarding_third_1),
             textAlign = TextAlign.Center, fontSize = 18.sp,
             color = Color.White
@@ -131,6 +132,7 @@ fun ThirdOnboarding() {
         }
         Spacer(modifier = Modifier.height(24.dp))
         Text(
+            modifier = Modifier.fillMaxWidth(),
             text = stringResource(R.string.onboarding_third_2),
             textAlign = TextAlign.Center, fontSize = 18.sp,
             color = Color.White

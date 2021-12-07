@@ -23,6 +23,7 @@ import com.sdzyume.logicblocks.ui.theme.DarkBlue
 fun SecondOnboarding() {
     Column {
         Text(
+            modifier = Modifier.fillMaxWidth(),
             text = stringResource(R.string.onboarding_second_1),
             textAlign = TextAlign.Center, fontSize = 18.sp,
             color = Color.White
@@ -55,6 +56,7 @@ fun SecondOnboarding() {
         }
         Spacer(modifier = Modifier.height(12.dp))
         Text(
+            modifier = Modifier.fillMaxWidth(),
             text = stringResource(R.string.onboarding_second_2),
             textAlign = TextAlign.Center, fontSize = 18.sp,
             color = Color.White

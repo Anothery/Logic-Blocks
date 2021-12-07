@@ -26,6 +26,7 @@ fun FourthOnboarding() {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
+            modifier = Modifier.fillMaxWidth(),
             text = stringResource(R.string.onboarding_fourth_1),
             textAlign = TextAlign.Center, fontSize = 18.sp,
             color = Color.White
