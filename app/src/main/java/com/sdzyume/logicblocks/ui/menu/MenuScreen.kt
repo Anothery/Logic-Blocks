@@ -52,7 +52,7 @@ fun MenuScreen(navController: NavController) {
             bottomLine,
             iterations = LottieConstants.IterateForever,
             modifier = Modifier
-                .padding(top = 80.dp)
+                .padding(top = 100.dp)
                 .fillMaxWidth()
                 .scale(4f)
         )

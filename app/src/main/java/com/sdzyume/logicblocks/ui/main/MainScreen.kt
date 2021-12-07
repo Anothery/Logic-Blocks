@@ -41,6 +41,7 @@ fun MainScreen(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
         LottieAnimation(
             backgr,
+            modifier = Modifier.fillMaxSize(),
             iterations = LottieConstants.IterateForever,
             contentScale = ContentScale.FillBounds
         )
